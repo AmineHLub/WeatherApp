@@ -1,7 +1,15 @@
-@import "tailwindcss";
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
+}
+
+@import "tailwindcss";
+
+@theme {
+  --color-primary-bg: #0d1527;
+  --color-secondary-bg: #161e2f;
+  --color-btn-p: #66f2c9;
+  --color-btn-p-hover: #66f2c9cc;
+  --color-text: #ffffff;
+  --color-text-secondary: #4a6585;
 }
