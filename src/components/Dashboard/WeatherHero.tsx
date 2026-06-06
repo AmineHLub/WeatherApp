@@ -1,5 +1,5 @@
 import SVGParser from '../../utils/SVGParser'
-import type { WeatherLocation, CurrentWeather, DailyWeather } from './types/weather'
+import type { WeatherLocation, CurrentWeather, DailyWeather } from '../../types/weather.types'
 
 type Props = {
   location: WeatherLocation | undefined
