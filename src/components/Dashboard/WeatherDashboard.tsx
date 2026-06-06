@@ -21,6 +21,7 @@ export default function WeatherDashboard() {
   const lat = getOnlyThirdDecimal(parseFloat(predefinedLocation.lat || searchParams.get('lat') || '0'))
   const lon = getOnlyThirdDecimal(parseFloat(predefinedLocation.lon || searchParams.get('lon') || '0'))
   const token = searchParams.get('token')
+  const label = searchParams.get('label') || predefinedLocation.label || ''
 
   const data = use(getWeatherData(token ?? '', lat ?? 0, lon ?? 0))
 
@@ -35,7 +36,7 @@ export default function WeatherDashboard() {
   return (
     <div className="flex h-full md:h-auto flex-col md:flex-row gap-5 w-full max-w-[920px]">
       <div className="flex flex-col gap-5 w-full h-full max-w-[600px]">
-        <WeatherHero location={location} current={current} today={today} />
+        <WeatherHero location={location} current={current} today={today} countrySearchedName={label} />
         <HourlyForecast hourly={hourly || []} count={6} />
         <AirConditions current={currentHourly} />
       </div>

@@ -5,6 +5,7 @@ type Props = {
   location: WeatherLocation | undefined
   current: CurrentWeather | undefined
   today: DailyWeather | undefined
+  countrySearchedName?: string
 }
 
 const conditionLabel: Record<string, string> = {
@@ -27,7 +28,7 @@ const conditionLabel: Record<string, string> = {
   '95': 'Thunderstorm',
 }
 
-export function WeatherHero({ location, current, today }: Props) {
+export function WeatherHero({ location, current, today, countrySearchedName }: Props) {
   const label = current?.condition_code ? conditionLabel[current?.condition_code] : 'Unknown'
   const rainChance = today?.precipitation_probability
 
@@ -37,7 +38,7 @@ export function WeatherHero({ location, current, today }: Props) {
     <div className="flex items-center justify-between px-7 py-6 bg-secondary-bg rounded-2xl min-h-[160px] font-syne">
       <div className="flex flex-col gap-4">
         <div className="hero-location">
-          <h1 className="text-[28px] font-[800] leading-[1] text-text">{location?.country}</h1>
+          <h1 className="text-[16px] md:text-[28px] font-[800] leading-[1] text-text">{countrySearchedName || location?.country}</h1>
           <p className="text-[13px] font-[400] text-text-secondary">Chance of rain: {rainChance}%</p>
         </div>
         <div className="text-[48px] md:text-[64px] font-[700] text-text leading-[1] mt-1">{Math.round(current?.temperature ?? 0)}°</div>
