@@ -1,75 +1,86 @@
-# React + TypeScript + Vite
+# WeatherApp 🌤️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A clean, fast weather dashboard built with React. Enter your location — manually or via GPS — and get a real-time forecast powered by the [Weather AI API](https://weather-ai.co/).
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Live
 
-## React Compiler
+[Use this Link](https://sneaky-weatherapp.netlify.app/)
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Inspiration
 
-Note: This will impact Vite dev & build performances.
+Yoinked parts (as much as I could) from this [Design](https://uizard.io/templates/web-app-templates/weather-web-app-dark/)
 
-## Expanding the ESLint configuration
+![Victim](https://uizard.io/static/89cb1d30cdee9c19b0ce72efe004ff49/0cfa7/f5e31989f816c5b15c47cd54b0eb0b30b210b6f0-1440x835.webp)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Features
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- 🌍 **Auto-detect location** via browser Geolocation API
+- 🔍 **Manual location search** by city name or coordinates
+- 🕐 **Hourly forecast** with temperature and conditions
+- 📅 **7-day weekly forecast**
+- 💨 **Air conditions** — humidity, wind speed, UV index, feels like
+- ⚡ **Instant loading** with React Suspense + streaming UI
+- 🚨 **Graceful error handling** via Error Boundaries
+
+---
+
+## Getting Started
+
+### 1. Get an API token
+
+Sign up at [weather-ai.co](https://weather-ai.co/) and grab your API token from the dashboard.
+
+### 2. Clone and install
+
+```bash
+git clone https://github.com/your-username/weatherapp.git
+cd weatherapp
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 3. Run the app
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+### 4. Enter your token
+
+On first launch, paste your API token from [weather-ai.co](https://weather-ai.co/) into the token input field. Then either:
+
+- Click **"Use my location"** to auto-detect via GPS
+- Or **type a city name** to search manually
+
+---
+
+## Tech Stack
+
+| Layer         | Technology               |
+| ------------- | ------------------------ |
+| Framework     | React 19                 |
+| Routing       | React Router v7          |
+| Data fetching | `React.use()` + Suspense |
+| HTTP client   | Axios                    |
+| Styling       | Tailwind CSS             |
+| Build tool    | Vite                     |
+
+---
+
+## How It Works
+
+1. The user provides a token + location (lat/lon)
+2. `getWeatherData()` fires a single cached Promise — the same reference is reused on re-renders so `React.use()` can suspend correctly
+3. `<Suspense>` shows a skeleton while the request is in flight
+4. `<ErrorBoundary>` catches any API or network failures and shows a readable message
+5. Once resolved, the full dashboard renders with current, hourly, and daily data
+
+---
+
+## License
+
+MIT
