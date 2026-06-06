@@ -1,7 +1,7 @@
-import type { HourlyWeather } from '../types/weather'
+import type { HourlyWeather } from './types/weather'
 
 type Props = {
-  current: HourlyWeather
+  current: HourlyWeather | undefined
 }
 
 export function AirConditions({ current }: Props) {
@@ -19,7 +19,7 @@ export function AirConditions({ current }: Props) {
             </svg>
             Real Feel
           </div>
-          <div className="font-syne text-[22px] font-bold text-text leading-[1]">{Math.round(current.feels_like)}°</div>
+          <div className="font-syne text-[22px] font-bold text-text leading-[1]">{Math.round(current?.feels_like ?? 0)}°</div>
         </div>
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-2 text-[12px] text-text-secondary font-medium">
@@ -28,7 +28,7 @@ export function AirConditions({ current }: Props) {
             </svg>
             Wind
           </div>
-          <div className="font-syne text-[22px] font-bold text-text leading-[1]">{current.wind_speed} km/h</div>
+          <div className="font-syne text-[22px] font-bold text-text leading-[1]">{current?.wind_speed ?? 0} km/h</div>
         </div>
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-2 text-[12px] text-text-secondary font-medium">
@@ -37,7 +37,7 @@ export function AirConditions({ current }: Props) {
             </svg>
             Chance of rain
           </div>
-          <div className="font-syne text-[22px] font-bold text-text leading-[1]">{current.precipitation_probability}%</div>
+          <div className="font-syne text-[22px] font-bold text-text leading-[1]">{current?.precipitation_probability ?? 0}%</div>
         </div>
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-2 text-[12px] text-text-secondary font-medium">
@@ -52,7 +52,7 @@ export function AirConditions({ current }: Props) {
             </svg>
             UV Index
           </div>
-          <div className="font-syne text-[22px] font-bold text-text leading-[1]">{current.uv_index}</div>
+          <div className="font-syne text-[22px] font-bold text-text leading-[1]">{current?.uv_index ?? 0}</div>
         </div>
       </div>
     </div>

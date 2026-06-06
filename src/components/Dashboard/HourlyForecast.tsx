@@ -1,5 +1,5 @@
-import SVGParser from '../../../utils/SVGParser'
-import type { HourlyWeather } from '../types/weather'
+import SVGParser from '../../utils/SVGParser'
+import type { HourlyWeather } from './types/weather'
 
 type Props = {
   hourly: HourlyWeather[]
