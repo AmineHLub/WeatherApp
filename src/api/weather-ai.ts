@@ -28,6 +28,10 @@ let weatherDataCache: Promise<{
   daily: DailyWeather[];
 }> | null = null;
 
+export const clearCache = () => {
+  weatherDataCache = null
+}
+
 export const getWeatherData = (
   token: string,
   lat: number,

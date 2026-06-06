@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { clearCache } from '../../../api/weather-ai';
 
 type LocationData = {
   lat: number
@@ -191,6 +192,7 @@ function SigninForm() {
       setTokenError('Invalid token format.')
       return
     }
+    clearCache()
     navigate(`/weather?lat=${location!.lat}&lon=${location!.lon}&label=${encodeURIComponent(location!.label)}&token=${encodeURIComponent(token.trim())}`, { state: { location, token } })
   }
 
