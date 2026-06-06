@@ -1,9 +1,11 @@
 
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap');
+@import "tailwindcss";
+
 * {
   box-sizing: border-box;
 }
 
-@import "tailwindcss";
 
 @theme {
   --color-primary-bg: #0d1527;
@@ -12,4 +14,22 @@
   --color-btn-p-hover: #66f2c9cc;
   --color-text: #ffffff;
   --color-text-secondary: #4a6585;
+  --font-syne: 'Syne', sans-serif;
+}
+
+.c-scrollbar-thin::-webkit-scrollbar {
+  width: 2px;
+}
+.c-scrollbar-thin::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.c-scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.c-scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
