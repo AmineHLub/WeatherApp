@@ -48,10 +48,5 @@ export const getWeatherData = (
   weatherDataCache = instance
     .get("/weather", { params: { lat, lon } })
     .then((res) => res.data)
-    .catch((err) => {
-      console.error("Error fetching weather data:", err);
-      weatherDataCache = null;
-      return null;
-    });
   return weatherDataCache;
 };
